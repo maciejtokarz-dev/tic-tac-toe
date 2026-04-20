@@ -1,0 +1,13 @@
+# Pliki binarne i pamięć podręczna Pythona
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Środowiska wirtualne (bardzo ważne, żeby ich nie pchać na serwer!)
+venv/
+.venv/
+env/
+
+# Pliki konfiguracyjne z hasłami (jeśli będziesz takie tworzył)
+.env
