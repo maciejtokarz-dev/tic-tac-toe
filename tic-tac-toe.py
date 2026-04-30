@@ -33,20 +33,22 @@ class Player:
         self.name = name
         self.symbol = symbol
 
-    def move(self):
-        square = input("Type a number of empty square: ")
-        self.fillSquare(square, self.symbol)
-        self.showBoard()
+    def move(self, board):
+        try:
+            square = int(input("Type a number of square: "))
+            board.fillSquare(square, self.symbol)
+            board.showBoard()
+        except ValueError:
+            print("You have to type a number!")
 
 g1 = Board()
 
 #for i in range(9):
 #    g1.fillSquare(i, 'X')
-p1 = Player("maciek", "X")
-p1.move()
+p1 = Player("Maciek", "X")
+p1.move(g1)
 
 g1.showBoard()
-g1.draw()
 
 
 
