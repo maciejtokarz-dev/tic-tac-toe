@@ -48,13 +48,15 @@ class Game:
         self.board = board
         self.player1 = player1
         self.player2 = player2
-        self.turn = turn
+        self.turn = self.p1
         
     def changeTurn(self):
-        if self.turn == p1:
-            self.turn = p2
-        elif self.turn == p2:
-                self.turn = p1
+        if self.turn == self.p1:
+            self.turn = self.p2
+        elif self.turn == self.p2:
+                self.turn = self.p1
+
+    
 
 
 
