@@ -57,12 +57,20 @@ class Game:
                 self.turn = self.p1
 
     def win(self):
-        cells = self.Board.listOfSquares
+        cells = self.board.listOfSquares
+
         win_conditions = [
             (0, 1, 2), (3, 4, 5), (6, 7 ,8),
             (0, 3, 6), (1, 4, 7), (2, 5, 8),
             (0, 4, 8), (3, 4, 6)               
-                       ]
+        ]
+
+        for a, b, c in win_conditions:
+            if cells[a] == cells[b] == cells[c] and cells[a] != "NULL ":
+                print(f"Player {self.turn.name} won")
+                return True
+            return False
+
         
 
 
