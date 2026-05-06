@@ -74,8 +74,12 @@ class Game:
     def play(self):
         while not self.win():
             self.board.showBoard()
-            self.turn.move(self.board)
-            self.changeTurn()
+            print(f"Ruch gracza {self.turn.name}")
+            successfulMethod =  self.turn.move(self.board)
+            if successfulMethod == True:
+                if not self.win():
+                    self.board.showBoard()
+                    self.changeTurn()
         else:
             print("Spróbuj ponownie")
 
