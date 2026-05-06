@@ -1,7 +1,7 @@
 class Board:
     
     def __init__(self):
-        self.listOfSquares = ["NULL  "] * 9
+        self.listOfSquares = ["/  "] * 9
     
     def showBoard(self):
         print("-----")
@@ -17,7 +17,7 @@ class Board:
             print(f"Indeks {square} nie poprawny! Wybierz indeks z przedzialu: (0-8)")
             return False
 
-        if self.listOfSquares[square] == "NULL  ":
+        if self.listOfSquares[square] == "/  ":
             self.listOfSquares[square] = symbol + '  '
             return True
         else:
@@ -66,23 +66,21 @@ class Game:
         ]
 
         for a, b, c in win_conditions:
-            if cells[a] == cells[b] == cells[c] and cells[a] != "NULL  ":
-                print(f"Player {self.turn.name} won")
+            if cells[a] == cells[b] == cells[c] and cells[a] != "/  ":
                 return True
         return False
     
     def play(self):
         while not self.win():
             self.board.showBoard()
-            print(f"Ruch gracza {self.turn.name}")
-            successfulMethod =  self.turn.move(self.board)
-            if successfulMethod == True:
-                if not self.win():
-                    self.board.showBoard()
-                    self.changeTurn()
-        else:
-            print("Spróbuj ponownie")
 
+            print(f"Ruch gracza {self.turn.name}")
+
+            if self.turn.move(self.board) == True:
+                if self.win():
+                    self.board.showBoard()
+                    print(f"Player {self.turn.name} won")
+                self.changeTurn()
         self.board.showBoard()
         print("Koniec gry!")
 
@@ -94,7 +92,7 @@ b1 = Board()
 #for i in range(9):
 #    g1.fillSquare(i, 'X')
 p1 = Player("Maciek", "X")
-p2 = Player("Bartosz", "Y")
+p2 = Player("Zuzia", "Y")
 g1 = Game(b1, p1, p2, p1)
 g1.play()
 
