@@ -69,9 +69,18 @@ class Game:
             if cells[a] == cells[b] == cells[c] and cells[a] != "NULL ":
                 print(f"Player {self.turn.name} won")
                 return True
-            return False
+        return False
+    
+    def play(self):
+        while not self.win():
+            self.board.showBoard()
+            self.turn.move(self.board)
+            self.changeTurn()
+        else:
+            print("Spróbuj ponownie")
 
-        
+        self.board.showBoard()
+        print("Koniec gry!")
 
 
 
@@ -83,10 +92,7 @@ b1 = Board()
 p1 = Player("Maciek", "X")
 p2 = Player("Bartosz", "Y")
 g1 = Game(b1, p1, p2, p1)
-p1.move(b1)
-g1.changeTurn()
-p2.move(b1)
-b1.showBoard()
+g1.play()
 
 
 
