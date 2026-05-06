@@ -66,7 +66,7 @@ class Game:
         ]
 
         for a, b, c in win_conditions:
-            if cells[a] == cells[b] == cells[c] and cells[a] != "NULL ":
+            if cells[a] == cells[b] == cells[c] and cells[a] != "NULL  ":
                 print(f"Player {self.turn.name} won")
                 return True
         return False
