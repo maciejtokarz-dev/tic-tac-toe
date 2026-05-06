@@ -48,13 +48,13 @@ class Game:
         self.board = board
         self.player1 = player1
         self.player2 = player2
-        self.turn = self.p1
+        self.turn = player1
         
     def changeTurn(self):
-        if self.turn == self.p1:
-            self.turn = self.p2
-        elif self.turn == self.p2:
-                self.turn = self.p1
+        if self.turn == self.player1:
+            self.turn = self.player2
+        elif self.turn == self.player2:
+                self.turn = self.player1
 
     def win(self):
         cells = self.board.listOfSquares
@@ -86,6 +86,7 @@ g1 = Game(b1, p1, p2, p1)
 p1.move(b1)
 g1.changeTurn()
 p2.move(b1)
+b1.showBoard()
 
 
 
