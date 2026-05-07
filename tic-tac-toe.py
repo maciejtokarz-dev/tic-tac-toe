@@ -80,6 +80,9 @@ class Game:
                 if self.win():
                     self.board.showBoard()
                     print(f"Player {self.turn.name} won")
+                if self.board.draw():
+                    self.board.showBoard()
+                    print(f"It's draw")
                 self.changeTurn()
         self.board.showBoard()
         print("Koniec gry!")
