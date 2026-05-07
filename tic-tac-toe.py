@@ -25,8 +25,7 @@ class Board:
             return False
 
     def draw(self):
-        if "NULL" not in self.listOfSquares:
-            print(f"It's a draw ladies and gentlemens! Now it's time for a rematch!")
+        if "/  " not in self.listOfSquares:
             return True
         return False
     
@@ -44,7 +43,7 @@ class Player:
             return False
 
 class Game:
-    def __init__(self, board, player1, player2, turn):
+    def __init__(self, board, player1, player2):
         self.board = board
         self.player1 = player1
         self.player2 = player2
@@ -62,7 +61,7 @@ class Game:
         win_conditions = [
             (0, 1, 2), (3, 4, 5), (6, 7 ,8),
             (0, 3, 6), (1, 4, 7), (2, 5, 8),
-            (0, 4, 8), (3, 4, 6)               
+            (0, 4, 8), (2, 4, 6)               
         ]
 
         for a, b, c in win_conditions:
@@ -78,11 +77,11 @@ class Game:
 
             if self.turn.move(self.board) == True:
                 if self.win():
-                    self.board.showBoard()
                     print(f"Player {self.turn.name} won")
+                    break
                 if self.board.draw():
-                    self.board.showBoard()
                     print(f"It's draw")
+                    break
                 self.changeTurn()
         self.board.showBoard()
         print("Koniec gry!")
@@ -96,7 +95,7 @@ b1 = Board()
 #    g1.fillSquare(i, 'X')
 p1 = Player("Maciek", "X")
 p2 = Player("Zuzia", "Y")
-g1 = Game(b1, p1, p2, p1)
+g1 = Game(b1, p1, p2)
 g1.play()
 
 
